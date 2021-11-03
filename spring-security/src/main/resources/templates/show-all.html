@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <title>Show all</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Address Book</h1>
+<table>
+    <tr>
+        <th>NAME</th>
+        <th>ADDRESS</th>
+        <th>ID</th>
+    </tr>
+    <tr th:each="entry : ${list}">
+        <td th:text="${entry.value.name}"></td>
+        <td th:text="${entry.value.address}"></td>
+        <td th:text="${entry.value.id}"></td>
+    </tr>
+</table>
+</body>
+</html>
