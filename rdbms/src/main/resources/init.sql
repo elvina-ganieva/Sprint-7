@@ -8,5 +8,3 @@ create table account1
     amount int,
     version int
 );
-
-
