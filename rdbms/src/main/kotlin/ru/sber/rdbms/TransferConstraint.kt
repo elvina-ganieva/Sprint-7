@@ -21,10 +21,8 @@ class TransferConstraint {
                 }
 
                 val prepareStatement = con.prepareStatement(
-                    "begin; " +
-                            "update account1 set amount = amount - $amount where id = $accountId1;" +
-                            "update account1 set amount = amount + $amount where id = $accountId2;" +
-                            "commit;"
+                    "update account1 set amount = amount - $amount where id = $accountId1;" +
+                            "update account1 set amount = amount + $amount where id = $accountId2;"
                 )
                 prepareStatement.use {
                     it.executeUpdate()
