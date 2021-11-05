@@ -1,7 +1,7 @@
 package main.kotlin.ru.sber.rdbms
 
-import org.postgresql.util.PSQLException
 import java.sql.DriverManager
+import java.sql.SQLException
 
 class TransferConstraint {
 
@@ -14,26 +14,25 @@ class TransferConstraint {
 
         connection.use { con ->
             try {
-                con.prepareStatement(
-                    "alter table account1 add constraint amount_check check (amount >= 0);"
-                ).use {
-                    it.executeUpdate()
-                }
-
-                val prepareStatement = con.prepareStatement(
-                    "update account1 set amount = amount - $amount where id = $accountId1;" +
-                            "update account1 set amount = amount + $amount where id = $accountId2;"
+                val prepareStatement1 = con.prepareStatement(
+                    "update account1 set amount = amount - ? where id = ?;"
                 )
-                prepareStatement.use {
-                    it.executeUpdate()
+                prepareStatement1.use { statement ->
+                    statement.setLong(1, amount)
+                    statement.setLong(2, accountId1)
+                    statement.executeUpdate()
                 }
 
-                con.prepareStatement(
-                    "alter table account1 drop constraint amount_check"
-                ).use {
-                    it.executeUpdate()
+                val prepareStatement2 = con.prepareStatement(
+                    "update account1 set amount = amount + ? where id = ?;"
+                )
+                prepareStatement2.use { statement ->
+                    statement.setLong(1, amount)
+                    statement.setLong(2, accountId2)
+                    statement.executeUpdate()
                 }
-            } catch (ex: PSQLException) {
+
+            } catch (ex: SQLException) {
                 println(ex.message)
             }
         }
