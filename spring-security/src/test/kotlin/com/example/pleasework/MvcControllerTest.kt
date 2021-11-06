@@ -1,7 +1,7 @@
 package com.example.pleasework
 
 import com.example.pleasework.dao.Person
-import com.example.pleasework.services.PersonService
+import com.example.pleasework.service.PersonService
 import org.hamcrest.CoreMatchers.containsString
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test

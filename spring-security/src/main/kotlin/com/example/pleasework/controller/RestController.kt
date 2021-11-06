@@ -1,7 +1,7 @@
-package com.example.pleasework.controllers
+package com.example.pleasework.controller
 
 import com.example.pleasework.dao.Person
-import com.example.pleasework.services.PersonService
+import com.example.pleasework.service.PersonService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.bind.annotation.RestController

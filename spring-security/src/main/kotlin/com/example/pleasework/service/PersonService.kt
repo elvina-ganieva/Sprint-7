@@ -1,4 +1,4 @@
-package com.example.pleasework.services
+package com.example.pleasework.service
 
 import com.example.pleasework.dao.Person
 import org.springframework.stereotype.Service

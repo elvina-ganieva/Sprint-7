@@ -1,7 +1,7 @@
 package com.example.pleasework
 
 import com.example.pleasework.dao.Person
-import com.example.pleasework.services.PersonService
+import com.example.pleasework.service.PersonService
 import org.junit.jupiter.api.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
