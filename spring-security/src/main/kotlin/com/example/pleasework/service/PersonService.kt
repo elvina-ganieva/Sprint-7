@@ -4,7 +4,6 @@ import com.example.pleasework.dao.Person
 import org.springframework.stereotype.Service
 import java.util.concurrent.ConcurrentHashMap
 
-
 @Service
 class PersonService {
 

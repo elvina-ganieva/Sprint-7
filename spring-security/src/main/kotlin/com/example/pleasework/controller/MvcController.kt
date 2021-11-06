@@ -3,10 +3,10 @@ package com.example.pleasework.controller
 import com.example.pleasework.dao.Person
 import com.example.pleasework.service.PersonService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.*
-
 
 @Controller
 @RequestMapping("/app")
@@ -50,6 +50,7 @@ class MvcController {
         return "edit-result"
     }
 
+    @PreAuthorize("hasAuthority('ROLE_DELETE')")
     @GetMapping("/{id}/delete")
     fun deletePerson(@PathVariable("id") id: String, model: Model): String {
         model.addAttribute("person", personService.getPerson(id))
