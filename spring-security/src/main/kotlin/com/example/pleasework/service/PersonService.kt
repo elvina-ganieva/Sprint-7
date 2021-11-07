@@ -1,12 +1,8 @@
 package com.example.pleasework.service
 
 import com.example.pleasework.dao.Person
-import org.apache.logging.log4j.message.MapMessage.MapFormat.names
 import org.springframework.stereotype.Service
 import java.util.concurrent.ConcurrentHashMap
-import java.util.function.BinaryOperator
-import java.util.function.Predicate
-import java.util.stream.Collectors
 
 
 @Service
