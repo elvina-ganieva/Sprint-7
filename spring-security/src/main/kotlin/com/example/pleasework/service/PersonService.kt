@@ -1,21 +1,20 @@
 package com.example.pleasework.service
 
 import com.example.pleasework.dao.Person
+import org.apache.logging.log4j.message.MapMessage.MapFormat.names
 import org.springframework.stereotype.Service
 import java.util.concurrent.ConcurrentHashMap
+import java.util.function.BinaryOperator
+import java.util.function.Predicate
+import java.util.stream.Collectors
+
 
 @Service
 class PersonService {
 
     fun getPersonList(name: String?, address: String?): Map<String, Person> {
-        return if (name != null && address != null)
-            persons.filter { name == it.value.name && address == it.value.address }
-        else if (name == null && address != null)
-            persons.filter { address == it.value.address }
-        else if (name != null && address == null)
-            persons.filter { name == it.value.name }
-        else
-            persons
+        return persons.filterValues { if (name != null) it.name == name else true }
+            .filterValues { if (address != null) it.address == address else true }
     }
 
     fun getPerson(id: String): Person? = persons[id]
