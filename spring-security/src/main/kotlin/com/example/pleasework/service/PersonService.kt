@@ -28,6 +28,11 @@ class PersonService {
 
     fun deletePerson(id: String) = persons.remove(id)
 
+    fun deleteAllPersons() {
+        persons.clear()
+        id = 1
+    }
+
     companion object {
         private val persons = ConcurrentHashMap<String, Person>()
         private var id = 1

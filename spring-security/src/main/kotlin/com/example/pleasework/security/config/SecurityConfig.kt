@@ -35,8 +35,6 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
             .antMatchers("/**").permitAll()
             .and()
             .formLogin()
-            .loginPage("/login")
-            .loginProcessingUrl("/perform-login")
             .defaultSuccessUrl("/app/add")
     }
 
